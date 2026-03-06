@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
 function getUsers() {
   let html = "";
   //FETCH API
-  fetch("bde3lv3opikrluny4l9y-mysql.services.clever-cloud.com", { mode: "cors" })
+  fetch("https://pdrilldb.onrender.com", { mode: "cors" })
     .then((response) => {
       console.log(response);
       return response.json();
@@ -42,6 +42,7 @@ submit.addEventListener("click", () => {
   alert("Product added successfully");
   location.reload();
 });
+
 
 
 
