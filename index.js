@@ -10,7 +10,7 @@ submit.addEventListener('click',()=>{
     let dateenrolled=document.querySelector("#dateenrolled").value;
     let formData={fullname,course,yearlevel,email,dateenrolled};
 
-    fetch("https://pdrilldb.onrender.com/api/users",{
+    fetch("https://pdrilldb.onrender.com/api/product",{
         method:'POST',
         body: JSON.stringify(formData),
         headers:{
@@ -31,7 +31,7 @@ window.addEventListener('load', ()=>{
 function getUsers(){
     let html=""
     //FETCH API
-    fetch("https://pdrilldb.onrender.com/api/users",{mode:'cors'})
+    fetch("https://pdrilldb.onrender.com/api/product",{mode:'cors'})
     .then(response=>{
         console.log(response);
         return response.json();
@@ -48,4 +48,5 @@ function getUsers(){
         console.log(error);
     })
 }
+
 
