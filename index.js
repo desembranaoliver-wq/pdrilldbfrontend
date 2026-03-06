@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
 function getUsers() {
   let html = "";
   //FETCH API
-  fetch("https://gadgets-rc3z.onrender.com/api/products", { mode: "cors" })
+  fetch("bde3lv3opikrluny4l9y-mysql.services.clever-cloud.com", { mode: "cors" })
     .then((response) => {
       console.log(response);
       return response.json();
@@ -42,5 +42,6 @@ submit.addEventListener("click", () => {
   alert("Product added successfully");
   location.reload();
 });
+
 
 
