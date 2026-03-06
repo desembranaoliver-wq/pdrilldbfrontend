@@ -32,7 +32,7 @@ submit.addEventListener("click", () => {
     quantity: document.querySelector("#quantity").value,
     supplier: document.querySelector("#supplier").value,
   };
-  fetch("https://pdrilldb.onrender.com", {
+  fetch("https://pdrilldb.onrender.com/api/products", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(product),
@@ -42,6 +42,7 @@ submit.addEventListener("click", () => {
   alert("Product added successfully");
   location.reload();
 });
+
 
 
 
