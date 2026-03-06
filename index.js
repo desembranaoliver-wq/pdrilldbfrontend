@@ -1,51 +1,50 @@
-const content = document.querySelector("#content");
-const submit = document.querySelector("#add");
-window.addEventListener("load", () => {
-  getUsers();
-});
-
-function getUsers() {
-  let html = "";
-  //FETCH API
-  fetch("https://pdrilldb.onrender.com", { mode: "cors" })
-    .then((response) => {
-      console.log(response);
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      data.forEach((element) => {
-        html += `<li>${element.id} ${element.fullname} - ${element.course} - ${element.yearlevel} - ${element.email} - ${element.dateenrolled} </li>`;
-      });
-      content.innerHTML = html;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
+const content=document.querySelector("#content");
+const submit=document.querySelector("#add");
 
 //POST API
-submit.addEventListener("click", () => {
-  const product = {
-    itemName: document.querySelector("#itemName").value,
-    unitPrice: document.querySelector("#price").value,
-    quantity: document.querySelector("#quantity").value,
-    supplier: document.querySelector("#supplier").value,
-  };
-  fetch("https://pdrilldb.onrender.com/api/products", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(product),
-  }).catch((error) => {
-    console.log(error);
-  });
-  alert("Product added successfully");
-  location.reload();
+submit.addEventListener('click',()=>{
+    let fullname=document.querySelector("#fullname").value;
+    let course=document.querySelector("#course").value;
+    let yearlevel=document.querySelector("#yearlevel").value;
+    let email=document.querySelector("#email").value;
+    let dateenrolled=document.querySelector("#dateenrolled").value;
+    let formData={fullname,course,yearlevel,email,dateenrolled};
+
+    fetch("http://localhost:7000/api/users",{
+        method:'POST',
+        body: JSON.stringify(formData),
+        headers:{
+            "Content-Type":"application/json",
+        },
+    }).catch((error)=>{
+        console.log(error);
+    })
+    alert("User Added Successfully");
+    location.reload();
 });
 
 
+window.addEventListener('load', ()=>{
+    getUsers();
+})
 
+function getUsers(){
+    let html=""
+    //FETCH API
+    fetch('http://localhost:7000/api/users',{mode:'cors'})
+    .then(response=>{
+        console.log(response);
+        return response.json();
+    })
+    .then(data=>{
+        console.log(data);
+        data.forEach(element=>{
+            html+=`<li> ${element.fullname} ${element.course} - ${element.yearlevel}</li>`
+        })
 
-
-
-
+        content.innerHTML=html;
+    })
+    .catch(error=>{
+        console.log(error);
+    })
+}
